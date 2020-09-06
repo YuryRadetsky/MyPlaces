@@ -38,7 +38,6 @@ class MainViewController: UITableViewController {
         cell.typeLabel.text = place.type
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
 
-
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace.clipsToBounds = true
 
@@ -50,6 +49,22 @@ class MainViewController: UITableViewController {
          return 85
     }
     
+    // MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let place = places[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+            StorageManager.deleteObject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [deleteAction]
+    }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let place = places[indexPath.row]
+//        StorageManager.deleteObject(place)
+//        tableView.deleteRows(at: [indexPath], with: .automatic)
+//    }
     /*
      // MARK: - Navigation
      
