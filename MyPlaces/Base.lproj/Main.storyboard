@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kde-ER-AnX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kde-ER-AnX">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -235,13 +235,21 @@
                     <navigationItem key="navigationItem" title="New place" id="4Ek-UU-rga" userLabel="New place">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="z68-8h-98c">
                             <connections>
-                                <segue destination="qJH-P3-0yy" kind="unwind" unwindAction="cancelAction:" id="6Xw-Yk-T0b"/>
+                                <action selector="cancelAction:" destination="wdF-RZ-gUu" id="G8f-7y-M4H"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rpc-Vy-oUW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rpc-Vy-oUW">
+                            <connections>
+                                <segue destination="qJH-P3-0yy" kind="unwind" unwindAction="unwindSeque:" id="voB-Er-Ltw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfPlace" destination="HeK-CV-9sc" id="xlZ-eZ-2WR"/>
+                        <outlet property="placeImage" destination="HeK-CV-9sc" id="xlZ-eZ-2WR"/>
+                        <outlet property="placeLocation" destination="eFk-Wi-Stq" id="Dwd-Zg-TIZ"/>
+                        <outlet property="placeName" destination="s1A-dM-zW2" id="2Q8-hb-V3H"/>
+                        <outlet property="placeType" destination="Zow-5a-aAD" id="mJW-44-f30"/>
+                        <outlet property="saveButton" destination="rpc-Vy-oUW" id="DFW-CL-9so"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRf-L3-3IZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
