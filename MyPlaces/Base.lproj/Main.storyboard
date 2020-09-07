@@ -67,6 +67,7 @@
                                     <outlet property="locationLabel" destination="eMP-Jj-uuY" id="sGy-Xo-Vcm"/>
                                     <outlet property="nameLabel" destination="m6T-Fe-g1R" id="3kN-Lm-PMM"/>
                                     <outlet property="typeLabel" destination="uBC-TI-j12" id="X4S-nT-dDe"/>
+                                    <segue destination="wdF-RZ-gUu" kind="show" identifier="showDetail" id="dez-bw-h6j"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,7 +76,7 @@
                             <outlet property="delegate" destination="zdU-5y-qhm" id="18m-PK-hdJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Places" id="QXg-uf-N5u">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="QXg-uf-N5u">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1qM-fO-dN3">
                             <connections>
                                 <segue destination="l6z-Al-Urf" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="8xa-3x-j9e"/>
@@ -232,7 +233,7 @@
                             <outlet property="delegate" destination="wdF-RZ-gUu" id="tXY-nL-GwQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New place" id="4Ek-UU-rga" userLabel="New place">
+                    <navigationItem key="navigationItem" title="New place" largeTitleDisplayMode="always" id="4Ek-UU-rga" userLabel="New place">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="z68-8h-98c">
                             <connections>
                                 <action selector="cancelAction:" destination="wdF-RZ-gUu" id="G8f-7y-M4H"/>
@@ -255,15 +256,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRf-L3-3IZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="qJH-P3-0yy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3396" y="129"/>
+            <point key="canvasLocation" x="2367" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bP6-qH-Z4Q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kde-ER-AnX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kVT-wZ-4mU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="kVT-wZ-4mU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="24"/>
@@ -295,9 +296,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2a-cX-Kaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2428" y="129"/>
+            <point key="canvasLocation" x="2367" y="-627"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dez-bw-h6j"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
     </resources>
