@@ -84,9 +84,12 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vix-KZ-IYZ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="39"/>
                                 <segments>
-                                    <segment title="Date"/>
                                     <segment title="Name"/>
+                                    <segment title="Type"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="bre-NO-pOr" eventType="valueChanged" id="DZV-Fq-qiv"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -99,7 +102,11 @@
                         <viewLayoutGuide key="safeArea" id="7pa-iJ-g9i"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="9Ki-ZF-aEV">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="vcM-s1-lxX"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="vcM-s1-lxX">
+                            <connections>
+                                <action selector="reversedSorting:" destination="bre-NO-pOr" id="dqh-qt-xn7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uWj-tc-s0b">
                             <connections>
                                 <segue destination="l6z-Al-Urf" kind="presentation" id="fAY-iM-gKE"/>
@@ -107,6 +114,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingButton" destination="vcM-s1-lxX" id="hfK-y7-mXq"/>
+                        <outlet property="segmentedControl" destination="Vix-KZ-IYZ" id="XcR-Kk-D8d"/>
                         <outlet property="tableView" destination="Eqx-od-dgx" id="MUF-Ar-mYr"/>
                     </connections>
                 </viewController>
@@ -322,7 +331,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2a-cX-Kaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2367" y="-627"/>
+            <point key="canvasLocation" x="2367" y="-597"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
