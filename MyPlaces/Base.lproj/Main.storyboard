@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4qH-kq-lhT">
-                                <rect key="frame" x="0.0" y="120" width="414" height="776"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="cpu-P9-UbV" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
@@ -98,7 +98,7 @@
                             <constraint firstItem="4qH-kq-lhT" firstAttribute="top" secondItem="CdU-RH-WXY" secondAttribute="bottom" constant="1" id="C51-VI-Mu0"/>
                             <constraint firstItem="4qH-kq-lhT" firstAttribute="leading" secondItem="cjV-O4-fkh" secondAttribute="leading" id="NFb-l3-PhF"/>
                             <constraint firstItem="CdU-RH-WXY" firstAttribute="leading" secondItem="4qH-kq-lhT" secondAttribute="leading" id="QHL-Cz-aTj"/>
-                            <constraint firstAttribute="bottom" secondItem="4qH-kq-lhT" secondAttribute="bottom" id="gIl-2y-G6S"/>
+                            <constraint firstAttribute="bottom" secondItem="4qH-kq-lhT" secondAttribute="bottom" constant="34" id="gIl-2y-G6S"/>
                             <constraint firstItem="CdU-RH-WXY" firstAttribute="top" secondItem="cjV-O4-fkh" secondAttribute="top" id="mJF-aA-0RL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cjV-O4-fkh"/>
@@ -304,6 +304,7 @@
                         <outlet property="placeLocation" destination="eFk-Wi-Stq" id="Dwd-Zg-TIZ"/>
                         <outlet property="placeName" destination="s1A-dM-zW2" id="2Q8-hb-V3H"/>
                         <outlet property="placeType" destination="Zow-5a-aAD" id="mJW-44-f30"/>
+                        <outlet property="ratingControl" destination="bL2-7O-XWO" id="1fQ-eO-uHx"/>
                         <outlet property="saveButton" destination="rpc-Vy-oUW" id="DFW-CL-9so"/>
                     </connections>
                 </tableViewController>
