@@ -27,7 +27,8 @@ class NewPlaceViewController: UITableViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0 , width: tableView.frame.size.width, height: 1))
         saveButton.isEnabled = false
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        setupEditScreen() 
+        setupEditScreen()
+        
     }
     
     // MARK: - Table view delegate

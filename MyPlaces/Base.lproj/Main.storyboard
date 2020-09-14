@@ -34,7 +34,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dOU-RS-pGf">
-                                                    <rect key="frame" x="96" y="8" width="302" height="65.666666666666671"/>
+                                                    <rect key="frame" x="96" y="8" width="212" height="65.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSF-DE-3uW">
                                                             <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="21.666666666666668"/>
@@ -56,17 +56,34 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="90" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="bRK-BP-D8K" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="316" y="34" width="90" height="14"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="4KN-RN-0Pa"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="filledStar"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="emptyStar"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="bRK-BP-D8K" firstAttribute="leading" secondItem="dOU-RS-pGf" secondAttribute="trailing" constant="8" id="5ly-3v-Mjc"/>
                                                 <constraint firstItem="Jvt-yV-qCo" firstAttribute="leading" secondItem="T27-xR-OOn" secondAttribute="leading" constant="15" id="AZs-yg-cUD"/>
                                                 <constraint firstItem="Jvt-yV-qCo" firstAttribute="centerY" secondItem="T27-xR-OOn" secondAttribute="centerY" id="FaK-SD-07Q"/>
                                                 <constraint firstAttribute="bottom" secondItem="dOU-RS-pGf" secondAttribute="bottom" constant="8" id="KAw-da-gpg"/>
-                                                <constraint firstAttribute="trailing" secondItem="dOU-RS-pGf" secondAttribute="trailing" constant="16" id="ZGR-u8-G2e"/>
+                                                <constraint firstItem="bRK-BP-D8K" firstAttribute="centerY" secondItem="T27-xR-OOn" secondAttribute="centerY" id="Rp7-Eg-451"/>
+                                                <constraint firstAttribute="trailing" secondItem="bRK-BP-D8K" secondAttribute="trailing" constant="8" id="VG6-zA-6MZ"/>
                                                 <constraint firstItem="dOU-RS-pGf" firstAttribute="leading" secondItem="Jvt-yV-qCo" secondAttribute="trailing" constant="16" id="evt-ar-kwx"/>
                                                 <constraint firstItem="dOU-RS-pGf" firstAttribute="top" secondItem="T27-xR-OOn" secondAttribute="top" constant="8" id="i8b-w4-Hvk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cosmosView" destination="bRK-BP-D8K" id="pyF-zt-Nsz"/>
                                             <outlet property="imageOfPlace" destination="Jvt-yV-qCo" id="dsy-Ql-glV"/>
                                             <outlet property="locationLabel" destination="w4g-In-5KY" id="nTp-mF-jQn"/>
                                             <outlet property="nameLabel" destination="bSF-DE-3uW" id="Fw9-RK-xas"/>
@@ -123,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzq-fi-jMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448" y="129"/>
+            <point key="canvasLocation" x="1446.376811594203" y="128.57142857142856"/>
         </scene>
         <!--New place-->
         <scene sceneID="en4-Dj-fe6">
@@ -311,7 +328,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRf-L3-3IZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="qJH-P3-0yy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2367" y="129"/>
+            <point key="canvasLocation" x="2366.666666666667" y="128.57142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bP6-qH-Z4Q">
@@ -360,5 +377,7 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
+        <image name="emptyStar" width="255" height="256"/>
+        <image name="filledStar" width="237.5" height="238"/>
     </resources>
 </document>
