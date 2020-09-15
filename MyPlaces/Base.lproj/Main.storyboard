@@ -172,7 +172,7 @@
                                                     </constraints>
                                                     <state key="normal" image="map"/>
                                                     <connections>
-                                                        <segue destination="SCt-D7-M5u" kind="presentation" modalPresentationStyle="fullScreen" id="ONa-Pb-OZn"/>
+                                                        <segue destination="SCt-D7-M5u" kind="presentation" identifier="showMap" modalPresentationStyle="fullScreen" id="ONa-Pb-OZn"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -377,6 +377,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SrH-gD-rGw"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="aYI-ZK-nua" id="bmq-e5-x8D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3j-t0-aqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
