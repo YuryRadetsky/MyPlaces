@@ -367,6 +367,17 @@
                                     <action selector="closeVC" destination="SCt-D7-M5u" eventType="touchUpInside" id="PT6-xN-R9m"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3u-gZ-cwD">
+                                <rect key="frame" x="324" y="806" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="qB4-pt-SMP"/>
+                                    <constraint firstAttribute="height" constant="50" id="tQf-Hs-4bK"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Location"/>
+                                <connections>
+                                    <action selector="CenterViewInUserLocation" destination="SCt-D7-M5u" eventType="touchUpInside" id="kTy-2n-tXY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SrH-gD-rGw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -375,8 +386,10 @@
                             <constraint firstItem="aYI-ZK-nua" firstAttribute="trailing" secondItem="SrH-gD-rGw" secondAttribute="trailing" id="BBC-GA-lMK"/>
                             <constraint firstAttribute="bottom" secondItem="aYI-ZK-nua" secondAttribute="bottom" id="HnJ-Gg-GcP"/>
                             <constraint firstItem="ZUt-Rr-0qc" firstAttribute="top" secondItem="SrH-gD-rGw" secondAttribute="top" constant="40" id="RVx-Tp-Nh2"/>
+                            <constraint firstAttribute="bottom" secondItem="P3u-gZ-cwD" secondAttribute="bottom" constant="40" id="lUj-Ou-FFd"/>
                             <constraint firstItem="aYI-ZK-nua" firstAttribute="top" secondItem="SuN-6V-UjJ" secondAttribute="top" id="n4J-1n-aJo"/>
                             <constraint firstItem="SrH-gD-rGw" firstAttribute="trailing" secondItem="ZUt-Rr-0qc" secondAttribute="trailing" constant="40" id="ndE-k5-8hf"/>
+                            <constraint firstItem="SrH-gD-rGw" firstAttribute="trailing" secondItem="P3u-gZ-cwD" secondAttribute="trailing" constant="40" id="puG-O0-q9b"/>
                         </constraints>
                     </view>
                     <connections>
@@ -441,6 +454,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="Location" width="128" height="128"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
         <image name="cancel" width="128" height="128"/>
         <image name="emptyStar" width="255" height="256"/>

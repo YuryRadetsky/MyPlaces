@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     var place = Place()
     var annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInMeters: Double = 10000
     
     
     @IBOutlet weak var mapView: MKMapView!
@@ -25,6 +26,16 @@ class MapViewController: UIViewController {
         setupPlacemark()
         checkLocationAuthorization()
     }
+    
+    @IBAction func CenterViewInUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
     
     @IBAction func closeVC() {
         dismiss(animated: true)
@@ -61,7 +72,12 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // Show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location Services are Disabled",
+                    message: "To anabled it go: Setting -> Privacy -> Location Services and turn On"
+                )
+            }
             
         }
     }
@@ -91,6 +107,14 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
