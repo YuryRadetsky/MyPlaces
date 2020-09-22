@@ -257,9 +257,9 @@
                                                         <constraint firstAttribute="height" constant="22" id="NHB-gU-BdW"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <state key="normal" image="location.circle.fill" catalog="system"/>
+                                                    <state key="normal" image="mappin.and.ellipse" catalog="system"/>
                                                     <connections>
-                                                        <segue destination="SCt-D7-M5u" kind="presentation" identifier="getAdress" modalPresentationStyle="fullScreen" id="cbd-hb-PGI"/>
+                                                        <segue destination="SCt-D7-M5u" kind="presentation" identifier="getAddress" modalPresentationStyle="fullScreen" id="cbd-hb-PGI"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -381,8 +381,9 @@
                                     <action selector="closeVC" destination="SCt-D7-M5u" eventType="touchUpInside" id="PT6-xN-R9m"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="CWV-AT-7uy">
-                                <rect key="frame" x="187" y="408" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CWV-AT-7uy">
+                                <rect key="frame" x="187" y="408" width="40" height="39.999999999999943"/>
+                                <color key="tintColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Oxn-zI-sCU"/>
                                     <constraint firstAttribute="height" constant="40" id="WWr-HH-hPN"/>
@@ -410,7 +411,8 @@
                                     <constraint firstAttribute="width" constant="30" id="qB4-pt-SMP"/>
                                     <constraint firstAttribute="height" constant="30" id="tQf-Hs-4bK"/>
                                 </constraints>
-                                <state key="normal" image="Location"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="location.circle" catalog="system"/>
                                 <connections>
                                     <action selector="centerViewInUserLocation" destination="SCt-D7-M5u" eventType="touchUpInside" id="kTy-2n-tXY"/>
                                 </connections>
@@ -438,7 +440,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UmG-7l-AtT"/>
                     <connections>
-                        <outlet property="adressLabel" destination="DIR-8Q-46Y" id="DEd-oA-NWI"/>
+                        <outlet property="addressLabel" destination="DIR-8Q-46Y" id="DEd-oA-NWI"/>
                         <outlet property="doneButton" destination="TDk-5P-hHb" id="Jb1-xu-mRR"/>
                         <outlet property="mapPinImage" destination="CWV-AT-7uy" id="IPm-Mv-lar"/>
                         <outlet property="mapView" destination="aYI-ZK-nua" id="bmq-e5-x8D"/>
@@ -503,14 +505,14 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
-        <image name="Location" width="128" height="128"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
-        <image name="Pin" width="40" height="40"/>
         <image name="cancel" width="128" height="128"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
-        <image name="location.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="location.circle" catalog="system" width="128" height="121"/>
         <image name="map" width="50" height="50"/>
+        <image name="mappin" catalog="system" width="105" height="128"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
