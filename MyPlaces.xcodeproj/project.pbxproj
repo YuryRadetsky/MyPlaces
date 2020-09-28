@@ -19,6 +19,7 @@
 		56658FAC24F83A620057884D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56658FAB24F83A620057884D /* MainViewController.swift */; };
 		566B9E4B2502DEA000FA8D9E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B9E4A2502DEA000FA8D9E /* StorageManager.swift */; };
 		569D05B52507DB2E0073647B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D05B42507DB2E0073647B /* RatingControl.swift */; };
+		56CB552F252263F6008C57F5 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB552E252263F6008C57F5 /* MapManager.swift */; };
 		F586A8FCE044B73768229021 /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268C907468A937F438547778 /* Pods_MyPlaces.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		56658FAB24F83A620057884D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		566B9E4A2502DEA000FA8D9E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		569D05B42507DB2E0073647B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		56CB552E252263F6008C57F5 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		579F50B28770E674D32622FA /* Pods-MyPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.debug.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.debug.xcconfig"; sourceTree = "<group>"; };
 		A21F6F742C1404022244BADC /* Pods-MyPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.release.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,21 +85,62 @@
 		56658F9624F833E10057884D /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				56658F9724F833E10057884D /* AppDelegate.swift */,
-				56658F9924F833E10057884D /* SceneDelegate.swift */,
-				56658FAB24F83A620057884D /* MainViewController.swift */,
-				561AF86424FD887C00F0499C /* NewPlaceViewController.swift */,
-				561AF86224FAEBA500F0499C /* PlaceModel.swift */,
-				5658197A250FC1DE00B757EE /* MapViewController.swift */,
-				566B9E4A2502DEA000FA8D9E /* StorageManager.swift */,
-				561AF86024FADF0300F0499C /* CustomTableViewCell.swift */,
-				569D05B42507DB2E0073647B /* RatingControl.swift */,
-				56658F9D24F833E10057884D /* Main.storyboard */,
-				56658FA024F833E20057884D /* Assets.xcassets */,
-				56658FA224F833E20057884D /* LaunchScreen.storyboard */,
+				56F3FBCE252278F000563159 /* Models */,
+				56F3FBCC2522787300563159 /* ViewControllers */,
+				56F3FBCF2522791100563159 /* IBuilder */,
+				56F3FBCD252278B700563159 /* Helpers */,
+				56F3FBD125227A1600563159 /* Support Files */,
 				56658FA524F833E20057884D /* Info.plist */,
 			);
 			path = MyPlaces;
+			sourceTree = "<group>";
+		};
+		56F3FBCC2522787300563159 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				56658FAB24F83A620057884D /* MainViewController.swift */,
+				561AF86424FD887C00F0499C /* NewPlaceViewController.swift */,
+				5658197A250FC1DE00B757EE /* MapViewController.swift */,
+				561AF86024FADF0300F0499C /* CustomTableViewCell.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		56F3FBCD252278B700563159 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				56CB552E252263F6008C57F5 /* MapManager.swift */,
+				566B9E4A2502DEA000FA8D9E /* StorageManager.swift */,
+				569D05B42507DB2E0073647B /* RatingControl.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		56F3FBCE252278F000563159 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				561AF86224FAEBA500F0499C /* PlaceModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		56F3FBCF2522791100563159 /* IBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				56658F9D24F833E10057884D /* Main.storyboard */,
+				56658FA224F833E20057884D /* LaunchScreen.storyboard */,
+			);
+			name = IBuilder;
+			sourceTree = "<group>";
+		};
+		56F3FBD125227A1600563159 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				56658F9724F833E10057884D /* AppDelegate.swift */,
+				56658F9924F833E10057884D /* SceneDelegate.swift */,
+				56658FA024F833E20057884D /* Assets.xcassets */,
+			);
+			name = "Support Files";
 			sourceTree = "<group>";
 		};
 		A1041039FCDA6AEB3F2CD6C0 /* Pods */ = {
@@ -230,6 +273,7 @@
 				566B9E4B2502DEA000FA8D9E /* StorageManager.swift in Sources */,
 				5658197B250FC1DE00B757EE /* MapViewController.swift in Sources */,
 				569D05B52507DB2E0073647B /* RatingControl.swift in Sources */,
+				56CB552F252263F6008C57F5 /* MapManager.swift in Sources */,
 				561AF86324FAEBA500F0499C /* PlaceModel.swift in Sources */,
 				561AF86124FADF0300F0499C /* CustomTableViewCell.swift in Sources */,
 				56658F9A24F833E10057884D /* SceneDelegate.swift in Sources */,
