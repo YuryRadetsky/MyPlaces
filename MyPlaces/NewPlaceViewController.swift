@@ -10,16 +10,21 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
-    var currentPlace: Place!
-    var imageIsChanged = false
+    // MARK: - IBOutlets
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var placeName: UITextField!
     @IBOutlet weak var placeLocation: UITextField!
     @IBOutlet weak var placeType: UITextField!
     @IBOutlet weak var ratingControl: RatingControl!
+    
+    // MARK: - Public Properties
+    
+    var currentPlace: Place!
+    var imageIsChanged = false
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,37 +77,16 @@ class NewPlaceViewController: UITableViewController {
         }
     }
     
-     // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard  let identifier = segue.identifier,
-               let mapVC = segue.destination as? MapViewController else { return }
-        
-        mapVC.incomeSegueIdentifier = identifier
-        mapVC.mapViewControllerDelegate = self
-        
-        if identifier == "showPlace" {
-            mapVC.place.name = placeName.text!
-            mapVC.place.location = placeLocation.text!
-            mapVC.place.type = placeType.text!
-            mapVC.place.imageData = placeImage.image?.pngData()
-        }
-    }
-     
+    // MARK: - Public Methods
     
     func savePlace() {
-        
         let image = imageIsChanged ? placeImage.image : #imageLiteral(resourceName: "imagePlaceholder")
-        
         let imageData = image?.pngData()
-        
         let newPlace = Place(name: placeName.text!,
                              location: placeLocation.text,
                              type: placeType.text,
                              imageData: imageData,
                              rating: Double(ratingControl.rating))
-        
         if currentPlace != nil {
             try! realm.write {
                 currentPlace?.name = newPlace.name
@@ -116,6 +100,8 @@ class NewPlaceViewController: UITableViewController {
         }
         
     }
+    
+    // MARK: - Private Methods
     
     private func setupEditScreen() {
         if currentPlace != nil {
@@ -144,14 +130,34 @@ class NewPlaceViewController: UITableViewController {
         saveButton.isEnabled = true
     }
     
+    // MARK: - IBActions
+    
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Navigation
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+       guard  let identifier = segue.identifier,
+              let mapVC = segue.destination as? MapViewController else { return }
+       
+       mapVC.incomeSegueIdentifier = identifier
+       mapVC.mapViewControllerDelegate = self
+       
+       if identifier == "showPlace" {
+           mapVC.place.name = placeName.text!
+           mapVC.place.location = placeLocation.text!
+           mapVC.place.type = placeType.text!
+           mapVC.place.imageData = placeImage.image?.pngData()
+       }
+   }
+    
 }
 
 
-// MARK: - Text field delegate
+// MARK: - Text Field Delegate
 extension NewPlaceViewController: UITextFieldDelegate {
     
     // Скрываем клавиатуру по нажатию на done
@@ -196,6 +202,7 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
     }
 }
 
+// MARK: - Map View Controller Delegate
 extension NewPlaceViewController: MapViewControllerDelegate {
     func getAddress(_ address: String?) {
         placeLocation.text = address

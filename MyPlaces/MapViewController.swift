@@ -14,14 +14,24 @@ protocol MapViewControllerDelegate {
     func getAddress(_ address: String?)
 }
 
+
 class MapViewController: UIViewController {
     
-    var mapManager = MapManager()
-    var mapViewControllerDelegate:MapViewControllerDelegate?
-    var place = Place()
+    // MARK: - IBOutlets
+
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var goButton: UIButton!
+    
+    // MARK: - Public Properties
     
     var annotationIdentifier = "annotationIdentifier"
     var incomeSegueIdentifier = ""
+    var mapManager = MapManager()
+    var place = Place()
+    var mapViewControllerDelegate: MapViewControllerDelegate?
     var placeCoordinate: CLLocationCoordinate2D?
     var previousLocation: CLLocation? {
         didSet {
@@ -37,13 +47,8 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
-    @IBOutlet weak var mapPinImage: UIImageView!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var goButton: UIButton!
-    
+
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +57,25 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         setupMapView()
     }
+    
+    // MARK: - Private Methods
+    
+    private func setupMapView() {
+        goButton.isHidden = true
+        mapManager.checkLocationServices(mapView: mapView, segueIdentifier: incomeSegueIdentifier) {
+            mapManager.locationManager.delegate = self
+        }
+        
+        if incomeSegueIdentifier == "showPlace" {
+            mapManager.setupPlacemark(place: place, mapView: mapView)
+            mapPinImage.isHidden = true
+            addressLabel.isHidden = true
+            doneButton.isHidden = true
+            goButton.isHidden = false
+        }
+    }
+    
+    // MARK: - IBActions
     
     @IBAction func centerViewInUserLocation() {
         mapManager.showUserLocation(mapView: mapView)
@@ -68,84 +92,52 @@ class MapViewController: UIViewController {
         }
     }
     
-    
     @IBAction func closeVC() {
         dismiss(animated: true)
     }
     
-    private func setupMapView() {
-        
-        goButton.isHidden = true
-        
-        mapManager.checkLocationServices(mapView: mapView, segueIdentifier: incomeSegueIdentifier) {
-            mapManager.locationManager.delegate = self
-        }
-        
-        if incomeSegueIdentifier == "showPlace" {
-            mapManager.setupPlacemark(place: place, mapView: mapView)
-            mapPinImage.isHidden = true
-            addressLabel.isHidden = true
-            doneButton.isHidden = true
-            goButton.isHidden = false
-        }
-    }
 }
 
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         guard !(annotation is MKUserLocation) else { return nil }
-        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MKPinAnnotationView
-        
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation,
                                                  reuseIdentifier: annotationIdentifier)
-            
             annotationView?.canShowCallout = true
         }
-        
         if let imageData = place.imageData {
-            
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             imageView.layer.cornerRadius = 10
             imageView.clipsToBounds = true
             imageView.image = UIImage(data: imageData)
             annotationView?.rightCalloutAccessoryView = imageView
         }
-        
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        
         let center = mapManager.getCenterLocation(for: mapView)
         let geocoder = CLGeocoder()
-        
         if incomeSegueIdentifier == "showPlace" && previousLocation != nil {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.mapManager.showUserLocation(mapView: self.mapView)
             }
         }
-        
         geocoder.cancelGeocode()
-        
         geocoder.reverseGeocodeLocation(center) { (placemarks, error) in
-            
             if let error = error {
                 print(error)
                 return
             }
-            
             guard let placemarks = placemarks else { return }
-            
             let placemark = placemarks.first
             let streetName = placemark?.thoroughfare
             let buildNumber = placemark?.subThoroughfare
             
             DispatchQueue.main.async {
-                
                 if streetName != nil && buildNumber != nil {
                     self.addressLabel.text = "\(streetName!), \(buildNumber!)"
                 } else if streetName != nil {
@@ -166,12 +158,12 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
+
 extension MapViewController: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
-        
         mapManager.checkLocationAuthorization(mapView: mapView,
                                               segueIdentifier: incomeSegueIdentifier)
     }
+    
 }

@@ -11,35 +11,35 @@ import MapKit
 
 class MapManager {
     
+    // MARK: - Public Properties
+    
     let locationManager = CLLocationManager()
+    
+    // MARK: - Private Properties
     
     private var placeCoordinate: CLLocationCoordinate2D?
     private var directionsArray: [MKDirections] = []
     private let regionInMeters = 1000.00
     
+    // MARK: - Public Methods
+    
     // Маркер заведения
     func setupPlacemark(place: Place, mapView: MKMapView) {
-        
         guard let location = place.location else { return }
-        
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(location) { (placemarks, error) in
-            
             if let error = error {
                 print(error)
                 return
             }
             
             guard let placemarks = placemarks else { return }
-            
             let placemark = placemarks.first
-            
             let annotation = MKPointAnnotation()
             annotation.title = place.name
             annotation.subtitle = place.type
             
             guard let placemarkLocation = placemark?.location else { return }
-            
             annotation.coordinate = placemarkLocation.coordinate
             self.placeCoordinate = placemarkLocation.coordinate
             
@@ -190,6 +190,8 @@ class MapManager {
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
+    
+    // MARK: - Private Methods
     
     private func showAlert(title: String, message: String) {
         
